@@ -10,7 +10,8 @@ export class AuthService {
   private agent: BskyAgent | null = null;
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
-
+  currentSessionSubject = new BehaviorSubject<any>(null);
+  currentSession$ = this.currentSessionSubject.asObservable();
   constructor() {
     this.initializeAgent();
     this.checkStoredSession();
@@ -22,6 +23,7 @@ export class AuthService {
         service: environment.bskyService,
         persistSession: (evt, session) => {
           if (session) {
+            this.currentSessionSubject.next(session);
             localStorage.setItem("bsky_session", JSON.stringify(session));
           }
         },
