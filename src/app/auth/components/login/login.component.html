@@ -1,12 +1,21 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <div *ngIf="errorMessage" class="error-message">
+<!-- Start of Selection -->
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+  <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
+  
+  <div *ngIf="errorMessage" class="mb-4 text-red-500">
     {{ errorMessage }}
   </div>
 
-  <input formControlName="identifier" placeholder="Username or email" />
-  <input type="password" formControlName="password" placeholder="Password" />
+  <div class="mb-4">
+    <input formControlName="identifier" placeholder="Username or email" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+  </div>
+  
+  <div class="mb-4">
+    <input type="password" formControlName="password" placeholder="Password" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+  </div>
 
-  <button type="submit" [disabled]="!loginForm.valid || isLoading">
+  <button type="submit" [disabled]="!loginForm.valid || isLoading" class="w-full bg-blue-500 text-white py-3 rounded hover:bg-blue-600 transition duration-200">
     {{ isLoading ? "Logging in..." : "Login" }}
   </button>
 </form>
+<!-- End of Selection -->

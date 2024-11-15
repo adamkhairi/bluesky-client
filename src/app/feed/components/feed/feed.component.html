@@ -22,7 +22,7 @@
 
   <!-- Feed Items -->
   <div class="space-y-4">
-    <div *ngFor="let item of feedItems$ | async">
+    <div *ngFor="let item of timeLineItems$ | async">
       <bc-feed-item [item]="item"></bc-feed-item>
     </div>
   </div>

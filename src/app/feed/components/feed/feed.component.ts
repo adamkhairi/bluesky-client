@@ -16,13 +16,13 @@ export class FeedComponent {
   private feedTimelineService = inject(FeedTimelineService);
 
   loading = false;
-  feedItems$ = this.feedTimelineService.feedItems$;
+  timeLineItems$ = this.feedTimelineService.timeLineItems$;
 
   ngOnInit() {
-    this.loadFeed();
+    this.loadTimeline();
   }
 
-  async loadFeed() {
+  async loadTimeline() {
     this.loading = true;
     try {
       await this.feedTimelineService.getTimeline();
@@ -35,7 +35,7 @@ export class FeedComponent {
     this.loading = true;
     try {
       // Implement load more logic
-      await this.feedTimelineService.getTimeline(50); // You might need to modify this to handle pagination
+      await this.feedTimelineService.getTimeline(10); // You might need to modify this to handle pagination
     } finally {
       this.loading = false;
     }
