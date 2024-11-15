@@ -1,0 +1,22 @@
+<header class="bg-gray-800 text-white py-4 px-2">
+  <div class="container mx-auto flex justify-between items-center">
+    <h1 class="text-2xl font-bold">Bluesky Client</h1>
+    <nav>
+      <ul class="flex space-x-4">
+        @if (isAuthenticated$ | async) {
+        <li *ngIf="isAuthenticated$ | async">
+          <button class="text-white bg-blue-500 px-4 py-2 rounded" (click)="logout()">Logout</button>
+        </li>
+        }@else {
+        <li>
+          <a class="text-white bg-blue-500 px-4 py-2 rounded" routerLink="/login">Login</a>
+        </li>
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container mx-auto py-8">
+  <router-outlet></router-outlet>
+</main>
