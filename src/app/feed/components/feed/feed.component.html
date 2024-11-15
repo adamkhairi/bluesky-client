@@ -1,0 +1,46 @@
+<div class="max-w-2xl mx-auto p-4">
+  <!-- Create Post Section -->
+  <div class="bg-white rounded-lg border border-gray-200 p-4 mb-4 shadow-sm">
+    <div class="flex space-x-4">
+      <img src="" alt="Your avatar" class="w-10 h-10 rounded-full" />
+      <div class="flex-1">
+        <textarea
+          placeholder="What's happening?"
+          class="w-full p-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+          rows="2"
+        ></textarea>
+        <div class="flex justify-end mt-2">
+          <button
+            class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition-colors"
+          >
+            Post
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feed Items -->
+  <div class="space-y-4">
+    <div *ngFor="let item of feedItems$ | async">
+      <bc-feed-item [item]="item"></bc-feed-item>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="loading" class="flex justify-center py-4">
+    <div
+      class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"
+    ></div>
+  </div>
+
+  <!-- Load More -->
+  <div class="flex justify-center mt-4">
+    <button
+      class="px-6 py-2 text-blue-500 hover:bg-blue-50 rounded-full transition-colors"
+      (click)="loadMore()"
+    >
+      Load more
+    </button>
+  </div>
+</div>

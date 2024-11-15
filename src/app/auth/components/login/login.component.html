@@ -1,0 +1,12 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <input formControlName="identifier" placeholder="Username or email" />
+  <input type="password" formControlName="password" placeholder="Password" />
+
+  <button type="submit" [disabled]="!loginForm.valid || isLoading">
+    {{ isLoading ? "Logging in..." : "Login" }}
+  </button>
+</form>
