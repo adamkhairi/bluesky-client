@@ -8,6 +8,11 @@ export const routes: Routes = [
     children: [
       {
         path: "",
+        redirectTo: "feed",
+        pathMatch: "full",
+      },
+      {
+        path: "feed",
         loadComponent: () =>
           import("./feed/components/feed/feed.component").then(
             (m) => m.FeedComponent,

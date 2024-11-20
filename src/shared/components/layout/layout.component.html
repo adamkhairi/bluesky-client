@@ -1,15 +1,15 @@
-<header class="bg-gray-800 text-white py-4 px-2">
+<header class="bg-black text-white py-4 px-2 border-b border-white-30">
   <div class="container mx-auto flex justify-between items-center">
-    <h1 class="text-2xl font-bold">Bluesky Client</h1>
+    <h1 class="text-2xl font-bold text-white">Bluesky Client</h1>
     <nav>
       <ul class="flex space-x-4">
         @if (isAuthenticated$ | async) {
         <li *ngIf="isAuthenticated$ | async">
-          <button class="text-white bg-blue-500 px-4 py-2 rounded" (click)="logout()">Logout</button>
+          <button class="text-white bg-black hover:bg-black/70 px-4 py-2 rounded transition-colors border border-white" (click)="logout()">Logout</button>
         </li>
         }@else {
         <li>
-          <a class="text-white bg-blue-500 px-4 py-2 rounded" routerLink="/login">Login</a>
+          <a class="text-white bg-black hover:bg-black/70 px-4 py-2 rounded transition-colors border border-white" routerLink="/login">Login</a>
         </li>
         }
       </ul>
@@ -17,6 +17,19 @@
   </div>
 </header>
 
-<main class="container mx-auto py-8">
+<main class="container mx-auto py-8 bg-black min-h-screen pb-24">
   <router-outlet></router-outlet>
 </main>
+
+<footer class="fixed bottom-0 w-full bg-black text-white py-4 px-2 border-t border-white-30">
+  <div class="container mx-auto flex justify-between items-center">
+    <div class="flex space-x-6">
+      <a href="#" class="text-white/70 hover:text-white transition-colors">About</a>
+      <a href="#" class="text-white/70 hover:text-white transition-colors">Privacy</a>
+      <a href="#" class="text-white/70 hover:text-white transition-colors">Terms</a>
+    </div>
+    <div class="text-white/70">
+      2024 Bluesky Client
+    </div>
+  </div>
+</footer>

@@ -1,17 +1,17 @@
 <div class="max-w-2xl mx-auto p-4">
   <!-- Create Post Section -->
-  <div class="bg-white rounded-lg border border-gray-200 p-4 mb-4 shadow-sm">
+  <div class="bg-black rounded-lg border border-white-30 p-4 mb-4 shadow-sm">
     <div class="flex space-x-4">
-      <img src="" alt="Your avatar" class="w-10 h-10 rounded-full" />
+      <img src="" alt="Your avatar" class="w-10 h-10 rounded-full border border-white-30" />
       <div class="flex-1">
         <textarea
           placeholder="What's happening?"
-          class="w-full p-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+          class="w-full p-2 bg-black text-white border border-white rounded-lg focus:ring-2 focus:ring-white/40 focus:border-transparent resize-none placeholder-white/50"
           rows="2"
         ></textarea>
         <div class="flex justify-end mt-2">
           <button
-            class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition-colors"
+            class="bg-black text-white px-4 py-2 rounded-full hover:bg-black/70 transition-colors border border-white"
           >
             Post
           </button>
@@ -30,14 +30,14 @@
   <!-- Loading State -->
   <div *ngIf="loading" class="flex justify-center py-4">
     <div
-      class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"
+      class="animate-spin rounded-full h-8 w-8 border-b-2 border-white-70"
     ></div>
   </div>
 
   <!-- Load More -->
   <div class="flex justify-center mt-4">
     <button
-      class="px-6 py-2 text-blue-500 hover:bg-blue-50 rounded-full transition-colors"
+      class="px-6 py-2 text-white bg-black hover:bg-black/70 rounded-full transition-colors border border-white"
       (click)="loadMore()"
     >
       Load more

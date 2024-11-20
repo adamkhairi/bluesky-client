@@ -1,12 +1,12 @@
 @if (item(); as item) {
-<div class="bg-white rounded-lg border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow duration-200">
+<div class="bg-black rounded-lg border border-white-30 p-4 shadow-sm hover:shadow-md transition-shadow duration-200">
   <!-- Reply Context -->
   @if (item.reply) {
-  <div class="mb-3 px-4 py-2 bg-gray-50 rounded-lg text-sm text-gray-600">
+  <div class="mb-3 px-4 py-2 bg-black rounded-lg text-sm text-white/70 border border-white-30">
     <div class="flex items-center space-x-2">
-      <fa-icon [icon]="faReply" class="text-gray-400"></fa-icon>
+      <fa-icon [icon]="faReply" class="text-white"></fa-icon>
       <span>Replying to
-        <span class="text-blue-500 hover:underline cursor-pointer">{{
+        <span class="text-white hover:text-white/80 hover:underline cursor-pointer">{{
           item.reply.parent.author.handle | handle
           }}</span></span>
     </div>
@@ -16,31 +16,30 @@
   <div class="flex items-center mb-3">
     <div class="relative">
       <img [src]="item.post.author.avatar" [alt]="item.post.author.displayName"
-        class="w-12 h-12 rounded-full border-2 border-white hover:opacity-90 transition-opacity cursor-pointer"
-        [class.border-blue-400]="item.post.author.viewer?.following" />
+        class="w-12 h-12 rounded-full border-2 border-white-30 hover:opacity-90 transition-opacity cursor-pointer"
+        [class.border-white]="item.post.author.viewer?.following" />
       @if (item.post.author.viewer?.following) {
-      <div class="absolute -bottom-1 -right-1 bg-blue-400 rounded-full w-5 h-5 flex items-center justify-center">
+      <div class="absolute -bottom-1 -right-1 bg-black rounded-full w-5 h-5 flex items-center justify-center border border-white">
         <fa-icon [icon]="faCheck" class="text-white text-xs"></fa-icon>
       </div>
       }@else {
-      <div class="absolute -bottom-1 -right-1 bg-blue-400 rounded-full w-5 h-5 flex items-center justify-center">
+      <div class="absolute -bottom-1 -right-1 bg-black rounded-full w-5 h-5 flex items-center justify-center border border-white">
         <button class="text-white text-xs" (click)="follow(item.post.author.did)">
           <fa-icon [icon]="faPlus"></fa-icon>
         </button>
       </div>
       }
-
     </div>
     <div class="flex flex-col ml-3">
       <div class="flex items-center space-x-2">
-        <span class="font-bold text-gray-900 hover:underline cursor-pointer">
+        <span class="font-bold text-white hover:underline cursor-pointer">
           {{ item.post.author.displayName }}
         </span>
-        <span class="text-sm text-gray-500">
+        <span class="text-sm text-white">
           {{ item.post.author.handle | handle }}
         </span>
-        <span class="text-sm text-gray-500">·</span>
-        <span class="text-sm text-gray-500 hover:underline cursor-pointer">
+        <span class="text-sm text-white">·</span>
+        <span class="text-sm text-white hover:underline cursor-pointer">
           {{ item.post.record.createdAt | date: "short" }}
         </span>
       </div>
@@ -48,37 +47,21 @@
   </div>
 
   <!-- Post Content -->
-  <div class="text-gray-800 mb-4 whitespace-pre-wrap">
-    {{ item.post.record.text }}
-  </div>
+  <div class="text-white mb-4 whitespace-pre-wrap">{{ item.post.record.text }}</div>
 
-  <!-- Post Metrics -->
-  <div class="flex justify-between items-center pt-3 border-t border-gray-100">
-    <button class="flex items-center space-x-2 text-gray-500 hover:text-blue-500 group transition-colors">
-      <div class="p-2 rounded-full group-hover:bg-blue-50">
-        <fa-icon [icon]="faComment"></fa-icon>
-      </div>
+  <!-- Post Actions -->
+  <div class="flex items-center space-x-6 text-white">
+    <button class="flex items-center space-x-2 hover:text-white transition-colors">
+      <fa-icon [icon]="faComment"></fa-icon>
       <span>{{ item.post.replyCount }}</span>
     </button>
-
-    <button class="flex items-center space-x-2 text-gray-500 hover:text-green-500 group transition-colors">
-      <div class="p-2 rounded-full group-hover:bg-green-50">
-        <fa-icon [icon]="faRetweet"></fa-icon>
-      </div>
+    <button class="flex items-center space-x-2 hover:text-white transition-colors">
+      <fa-icon [icon]="faRetweet"></fa-icon>
       <span>{{ item.post.repostCount }}</span>
     </button>
-
-    <button class="flex items-center space-x-2 text-gray-500 hover:text-red-500 group transition-colors">
-      <div class="p-2 rounded-full group-hover:bg-red-50">
-        <fa-icon [icon]="faHeart"></fa-icon>
-      </div>
+    <button class="flex items-center space-x-2 hover:text-white transition-colors">
+      <fa-icon [icon]="faHeart"></fa-icon>
       <span>{{ item.post.likeCount }}</span>
-    </button>
-
-    <button class="flex items-center space-x-2 text-gray-500 hover:text-blue-500 group transition-colors">
-      <div class="p-2 rounded-full group-hover:bg-blue-50">
-        <fa-icon [icon]="faShare"></fa-icon>
-      </div>
     </button>
   </div>
 </div>
